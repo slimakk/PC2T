@@ -27,7 +27,7 @@ public class BPC1 implements Predmet
     {
         Scanner sc = new Scanner(System.in);
         int body = 0;
-        String key ="";
+        String key;
         for(;;)
         {
             System.out.println("Zadaj pocet bodov za cvicenie (0-20) alebo ukonci x");
