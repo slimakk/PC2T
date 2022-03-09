@@ -10,10 +10,10 @@ public class Test {
         tovar[3] = new Potravina("Jablko", 51.0,20);
         for(int i = 0; i < tovar.length;i++)
         {
-            if(tovar[i]instanceof Naradi)
-                System.out.println(String.format("%s cena: %.2f",tovar[i].getNazovZbozi(),tovar[i].getCena()));
-            else if(tovar[i]instanceof Potravina)
-                System.out.println(String.format("%s cena: %.2f trvanlivost: %d %s",tovar[i].getNazovZbozi(),tovar[i].getCena(),((Potravina) tovar[i]).getTrvanlivost(),tovar[i].getJednotka()));
+            if(tovar[i] instanceof Naradi)
+                System.out.printf("%s cena: %.2f zaruka: %d %s%n",tovar[i].getNazovZbozi(),tovar[i].getCena(),((Naradi) tovar[i]).getZaruka(),tovar[i].getJednotka());
+            else if(tovar[i] instanceof Potravina)
+                System.out.printf("%s cena: %.2f trvanlivost: %d %s%n",tovar[i].getNazovZbozi(),tovar[i].getCena(),((Potravina) tovar[i]).getTrvanlivost(),tovar[i].getJednotka());
         }
 
     }

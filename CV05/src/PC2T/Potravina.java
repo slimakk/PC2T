@@ -9,7 +9,7 @@ public class Potravina extends Zbozi{
     public Potravina(String nazov,double cena,int trvan)
     {
         super(nazov,cena);
-        this.trvanlivost = trvan;
+        setTrvanlivost(trvan);
     }
     public void setTrvanlivost(int trvan)
     {

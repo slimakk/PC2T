@@ -8,7 +8,7 @@ public class Naradi extends Zbozi{
     public Naradi(String nazov, double cena,int warr)
     {
         super(nazov,cena);
-        this.zaruka = warr;
+        setZaruka(warr);
     }
     public void setZaruka(int zaruka)
     {
