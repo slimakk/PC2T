@@ -40,4 +40,20 @@ public class Databaza {
                 break;
         }
     }
+    public Student getStudent(int ID)
+    {
+        for(Student student : prvkyDatabaze.values())
+        {
+            if(prvkyDatabaze.get(ID).equals(ID))
+                return student;
+        }
+        return null;
+    }
+    public boolean vyhodStudenta(int ID)
+    {
+        if(prvkyDatabaze.get(ID) == null)
+            return false;
+        prvkyDatabaze.remove(ID);
+        return true;
+    }
 }

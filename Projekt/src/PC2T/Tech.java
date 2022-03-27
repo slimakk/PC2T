@@ -12,8 +12,8 @@ public class Tech extends Student{
     }
     @Override
     public void Abilita() {
-        int datum = getDatum();
-        if(datum % 4 == 0)
+        int[] datum = getDatum();
+        if(datum[2] % 4 == 0)
         {
             System.out.println("Rok narodenia je prestupny rok");
         }

@@ -20,9 +20,9 @@ public abstract class Student {
         this.datum[1] = mesiac;
         this.datum[2] = rok;
     }
-    public int getDatum()
+    public int[] getDatum()
     {
-        return datum[2];
+        return datum;
     }
     public String getMeno()
     {
