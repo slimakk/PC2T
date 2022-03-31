@@ -1,11 +1,15 @@
 package PC2T;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Student {
     private int id;
     private String meno;
     private String priezvisko;
     protected int[] datum = new int[3];
-
+    protected List<Integer> znamky = new ArrayList<>();
+    private double priemer;
     public void setID(int id) {
         this.id = id;
     }
@@ -36,5 +40,25 @@ public abstract class Student {
     {
         return this.id;
     }
+    public void addZnamka(int znamka)
+    {
+        if(znamka >= 1 && znamka <= 5)
+            this.znamky.add(znamka);
+        else
+            System.out.println("Zla znamka");
+    }
+
+    public double getPriemer() {
+        for (var znamka : this.znamky)
+        {
+            this.priemer += znamka;
+        }
+        this.priemer = priemer / this.znamky.size();
+        return this.priemer;
+    }
+
     abstract void Abilita();
+    @Override
+    public abstract String toString();
+    abstract String getTypeOfStudium();
 }

@@ -1,6 +1,6 @@
 package PC2T;
 
-import java.util.SortedMap;
+import java.util.Arrays;
 
 public class Tech extends Student{
 
@@ -21,5 +21,14 @@ public class Tech extends Student{
         {
             System.out.println("Rok narodenia nie je prestupny rok");
         }
+    }
+    @Override
+    public String toString()
+    {
+        return "ID: "+getId()+" Meno: " + getMeno() + " Priezvisko: " + getPriezvisko() + " Datum narodenia " + Arrays.toString(getDatum()) + " Priemer: " + getPriemer();
+    }
+    public String getTypeOfStudium()
+    {
+        return "Tech";
     }
 }

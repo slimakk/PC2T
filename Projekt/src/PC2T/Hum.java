@@ -1,5 +1,7 @@
 package PC2T;
 
+import java.util.Arrays;
+
 public class Hum extends  Student{
 
     public Hum(String meno, String priezvisko, int ID, int den, int mesiac, int rok)
@@ -34,5 +36,16 @@ public class Hum extends  Student{
             System.out.println("Znamenie: Vodnar");
         else if(((datum[0] >= 20) && (datum[1] == 2)) || ((datum[0] <= 20) && (datum[1] == 3)))
             System.out.println("Znamenie: Byk");
+    }
+
+    @Override
+    public String toString()
+    {
+        return "ID: "+getId()+" Meno: " + getMeno() + " Priezvisko: " + getPriezvisko() + " Datum narodenia " + Arrays.toString(getDatum()) + " Priemer: " + getPriemer();
+    }
+
+    @Override
+    String getTypeOfStudium() {
+        return "Humanitne";
     }
 }
