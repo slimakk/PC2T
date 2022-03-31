@@ -46,7 +46,7 @@ public class Databaza {
     {
         for(Student student : prvkyDatabaze.values())
         {
-            if(prvkyDatabaze.get(ID).equals(ID))
+            if(prvkyDatabaze.get(ID).getId() == ID)
                 return student;
         }
         return null;
@@ -87,19 +87,19 @@ public class Databaza {
         System.out.println("Technicky odbor:");
         for (var value : entryList)
         {
-            if(value.getValue().getTypeOfStudium() == "Tech")
+            if(value.getValue().getTypeOfStudium().equals("Tech"))
                 System.out.println(value.getValue());
         }
         System.out.println("Humanitny odbor:");
         for (var value : entryList)
         {
-            if(value.getValue().getTypeOfStudium() == "Humanitne")
+            if(value.getValue().getTypeOfStudium().equals("Humanitne"))
                 System.out.println(value.getValue());
         }
         System.out.println("Kombinovany odbor:");
         for (var value : entryList)
         {
-            if(value.getValue().getTypeOfStudium() == "Kombinovane")
+            if(value.getValue().getTypeOfStudium().equals("Kombinovane"))
                 System.out.println(value.getValue());
         }
 
@@ -110,9 +110,9 @@ public class Databaza {
         int[] pocty = new int[3];
         for(int kluc:kluce)
         {
-            if(prvkyDatabaze.get(kluc).getTypeOfStudium() == "Tech")
+            if(prvkyDatabaze.get(kluc).getTypeOfStudium().equals("Tech"))
                 pocty[0]++;
-            else if(prvkyDatabaze.get(kluc).getTypeOfStudium() == "Humanitne")
+            else if(prvkyDatabaze.get(kluc).getTypeOfStudium().equals("Humanitne"))
                 pocty[1]++;
             else
                 pocty[2]++;
@@ -126,9 +126,9 @@ public class Databaza {
         double techPriemer = 0; double humPriemer = 0;
         for(int key:keys)
         {
-            if(prvkyDatabaze.get(key).getTypeOfStudium() == "Tech")
+            if(prvkyDatabaze.get(key).getTypeOfStudium().equals("Tech"))
                 techPriemer+=prvkyDatabaze.get(key).getPriemer();
-            else if(prvkyDatabaze.get(key).getTypeOfStudium() == "Humanitne")
+            else if(prvkyDatabaze.get(key).getTypeOfStudium().equals("Humanitne"))
                 humPriemer+=prvkyDatabaze.get(key).getPriemer();
         }
         techPriemer = techPriemer / PocetStudentov()[0];

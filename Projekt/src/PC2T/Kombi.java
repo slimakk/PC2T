@@ -14,11 +14,6 @@ public class Kombi extends Student{
     void Abilita() {
 
     }
-    @Override
-    public String toString()
-    {
-        return "ID: "+getId()+" Meno: " + getMeno() + " Priezvisko: " + getPriezvisko() + " Datum narodenia " + Arrays.toString(getDatum()) + " Priemer: " + getPriemer();
-    }
 
     @Override
     String getTypeOfStudium() {

@@ -59,6 +59,10 @@ public abstract class Student {
 
     abstract void Abilita();
     @Override
-    public abstract String toString();
+    public String toString()
+    {
+        String datum = getDatum()[0] +"."+getDatum()[1]+"."+getDatum()[2];
+        return "ID: "+getId()+" Meno: " + getMeno() + " Priezvisko: " + getPriezvisko() + " Datum narodenia " + datum + " Priemer: " + getPriemer();
+    }
     abstract String getTypeOfStudium();
 }

@@ -12,7 +12,6 @@ public class Tech extends Student{
     }
     @Override
     public void Abilita() {
-        int[] datum = getDatum();
         if(datum[2] % 4 == 0)
         {
             System.out.println("Rok narodenia je prestupny rok");
@@ -22,11 +21,7 @@ public class Tech extends Student{
             System.out.println("Rok narodenia nie je prestupny rok");
         }
     }
-    @Override
-    public String toString()
-    {
-        return "ID: "+getId()+" Meno: " + getMeno() + " Priezvisko: " + getPriezvisko() + " Datum narodenia " + Arrays.toString(getDatum()) + " Priemer: " + getPriemer();
-    }
+
     public String getTypeOfStudium()
     {
         return "Tech";

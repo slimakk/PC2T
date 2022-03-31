@@ -39,12 +39,6 @@ public class Hum extends  Student{
     }
 
     @Override
-    public String toString()
-    {
-        return "ID: "+getId()+" Meno: " + getMeno() + " Priezvisko: " + getPriezvisko() + " Datum narodenia " + Arrays.toString(getDatum()) + " Priemer: " + getPriemer();
-    }
-
-    @Override
     String getTypeOfStudium() {
         return "Humanitne";
     }
