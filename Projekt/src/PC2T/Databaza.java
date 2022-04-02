@@ -10,6 +10,20 @@ public class Databaza {
         prvkyDatabaze = new TreeMap<>();
         sc = new Scanner(System.in);
     }
+
+    public TreeMap<Integer, Student> getPrvkyDatabaze() {
+        return prvkyDatabaze;
+    }
+
+    public void setPrvkyDatabaze(int id, String meno, String priezvisko, int den, int mesiac, int rok, String typ) {
+        if(typ.equals("Tech"))
+            this.prvkyDatabaze.put(id,new Tech(meno,priezvisko,id,den,mesiac,rok));
+        else if(typ.equals("Humanitne"))
+            this.prvkyDatabaze.put(id,new Hum(meno,priezvisko,id,den,mesiac,rok));
+        else
+            this.prvkyDatabaze.put(id,new Kombi(meno,priezvisko,id,den,mesiac,rok));
+    }
+
     public void setStudent()
     {
         System.out.println("Zadaj meno a priezvisko");
@@ -32,13 +46,13 @@ public class Databaza {
         switch(volba)
         {
             case 1:
-                prvkyDatabaze.put(id,new Tech(meno,priezvisko,id,datum[0],datum[1],datum[2] ) );
+                this.prvkyDatabaze.put(id,new Tech(meno,priezvisko,id,datum[0],datum[1],datum[2]) );
                 break;
             case 2:
-                prvkyDatabaze.put(id,new Hum(meno,priezvisko,id,datum[0],datum[1],datum[2] ) );
+                this.prvkyDatabaze.put(id,new Hum(meno,priezvisko,id,datum[0],datum[1],datum[2]) );
                 break;
             case 3:
-                prvkyDatabaze.put(id,new Kombi(meno,priezvisko,id,datum[0],datum[1],datum[2] ) );
+                this.prvkyDatabaze.put(id,new Kombi(meno,priezvisko,id,datum[0],datum[1],datum[2]) );
                 break;
         }
     }
@@ -55,35 +69,30 @@ public class Databaza {
     {
         if(prvkyDatabaze.get(ID) == null)
             return false;
-        prvkyDatabaze.remove(ID);
+        this.prvkyDatabaze.remove(ID);
         return true;
     }
     public boolean addZnamku(int ID, int znamka)
     {
         if(prvkyDatabaze.get(ID) == null)
             return false;
-        prvkyDatabaze.get(ID).addZnamka(znamka);
+        this.prvkyDatabaze.get(ID).addZnamka(znamka);
         return true;
     }
     public String VypisStudenta(int ID)
     {
-        if(prvkyDatabaze.containsKey(ID))
+        if(this.prvkyDatabaze.containsKey(ID))
         {
-            return "Meno: " + prvkyDatabaze.get(ID).getMeno() + " Priezvisko: " + prvkyDatabaze.get(ID).getPriezvisko() +
-                    " Datum narodenia: " + Arrays.toString(prvkyDatabaze.get(ID).getDatum()) + " Priemer: " + prvkyDatabaze.get(ID).getPriemer();
+            return "Meno: " + this.prvkyDatabaze.get(ID).getMeno() + " Priezvisko: " + this.prvkyDatabaze.get(ID).getPriezvisko() +
+                    " Datum narodenia: " + Arrays.toString(this.prvkyDatabaze.get(ID).getDatum()) + " Priemer: " + this.prvkyDatabaze.get(ID).getPriemer();
         }
         else
             return "Zadany student neexistuje";
     }
     public void SortStudent()
     {
-        List<Map.Entry<Integer, Student>> entryList = new ArrayList<Map.Entry<Integer, Student>>(prvkyDatabaze.entrySet());
-        Collections.sort(entryList, new Comparator<Map.Entry<Integer, Student>>() {
-            @Override
-            public int compare(Map.Entry<Integer, Student> o1, Map.Entry<Integer, Student> o2) {
-                return o1.getValue().getPriezvisko().compareTo(o2.getValue().getPriezvisko());
-            }
-        });
+        List<Map.Entry<Integer, Student>> entryList = new ArrayList<Map.Entry<Integer, Student>>(this.prvkyDatabaze.entrySet());
+        entryList.sort((o1, o2) -> o1.getValue().getPriezvisko().compareTo(o2.getValue().getPriezvisko()));
         System.out.println("Technicky odbor:");
         for (var value : entryList)
         {
@@ -106,7 +115,7 @@ public class Databaza {
     }
     public int[] PocetStudentov()
     {
-        Set <Integer> kluce = prvkyDatabaze.keySet();
+        Set <Integer> kluce = this.prvkyDatabaze.keySet();
         int[] pocty = new int[3];
         for(int kluc:kluce)
         {

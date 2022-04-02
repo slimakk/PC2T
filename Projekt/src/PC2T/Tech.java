@@ -1,6 +1,5 @@
 package PC2T;
 
-import java.util.Arrays;
 
 public class Tech extends Student{
 

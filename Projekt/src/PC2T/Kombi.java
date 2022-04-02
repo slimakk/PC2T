@@ -1,6 +1,5 @@
 package PC2T;
 
-import java.util.Arrays;
 
 public class Kombi extends Student{
     public Kombi(String meno, String priezvisko, int ID, int den, int mesiac, int rok)
