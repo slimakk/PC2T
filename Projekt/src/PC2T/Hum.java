@@ -1,7 +1,5 @@
 package PC2T;
 
-import java.util.Arrays;
-
 public class Hum extends  Student{
 
     public Hum(String meno, String priezvisko, int ID, int den, int mesiac, int rok)

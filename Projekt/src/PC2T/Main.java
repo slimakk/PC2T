@@ -67,19 +67,18 @@ public class Main {
                     typ = ValidInput.OnlyInteger(sc);
                     if(typ == 1)
                         //nacitanie zo suboru
-                        continue;
+                        DbFile.LoadFromTXT("databaza.txt",studenti);
                     else
-                        //nacitanie z sql
+                        System.out.println("Not implemented");
                     break;
                 case 10:
                     System.out.println("1 - Ulozenie databazy do suboru\n2 - Ulozenie databazy do SQL");
                     typ = ValidInput.OnlyInteger(sc);
                     if(typ == 1)
-                        //nacitanie zo suboru
-                        continue;
+                        DbFile.zapisDoTXT(studenti,"databaza.txt");
                     else
-                        //nacitanie z sql
-                        break;
+                        System.out.println("Not implemented");
+                    break;
                 case 11:
                     run = false;
                     break;

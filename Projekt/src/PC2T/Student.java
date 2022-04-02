@@ -24,9 +24,11 @@ public abstract class Student {
         this.datum[1] = mesiac;
         this.datum[2] = rok;
     }
+
+
     public int[] getDatum()
     {
-        return datum;
+        return this.datum;
     }
     public String getMeno()
     {
@@ -43,17 +45,28 @@ public abstract class Student {
     public void addZnamka(int znamka)
     {
         if(znamka >= 1 && znamka <= 5)
+        {
             this.znamky.add(znamka);
+            setPriemer();
+        }
         else
             System.out.println("Zla znamka");
     }
 
-    public double getPriemer() {
+    public List<Integer> getZnamky() {
+        return this.znamky;
+    }
+
+    public void setPriemer() {
+        this.priemer = 0;
         for (var znamka : this.znamky)
         {
             this.priemer += znamka;
         }
-        this.priemer = priemer / this.znamky.size();
+        this.priemer = this.priemer / this.znamky.size();
+    }
+
+    public double getPriemer() {
         return this.priemer;
     }
 
