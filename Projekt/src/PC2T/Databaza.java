@@ -143,9 +143,4 @@ public class Databaza {
         humPriemer = humPriemer / PocetStudentov()[1];
         System.out.println("Technicky odbor: "+techPriemer+"\nHumanitny odbor: "+humPriemer);
     }
-    public void RunAbility(int ID)
-    {
-        if(prvkyDatabaze.get(ID).getTypeOfStudium().equals("Tech"))
-            prvkyDatabaze.get(ID);
-    }
 }
