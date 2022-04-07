@@ -143,4 +143,23 @@ public class Databaza {
         humPriemer = humPriemer / PocetStudentov()[1];
         System.out.println("Technicky odbor: "+techPriemer+"\nHumanitny odbor: "+humPriemer);
     }
+    public void AddToDB(DbSQL db)
+    {
+        Set <Integer> kluce = this.prvkyDatabaze.keySet();
+        int i = 0;
+        for(int kluc:kluce)
+        {
+            int id = prvkyDatabaze.get(kluc).getId();
+            String name = prvkyDatabaze.get(kluc).getMeno();
+            String surname = prvkyDatabaze.get(kluc).getPriezvisko();
+            int[] datum = prvkyDatabaze.get(kluc).getDatum();
+            String type = prvkyDatabaze.get(kluc).getTypeOfStudium();
+            db.AddStudent(id,name,surname,datum,type);
+            for(var value:prvkyDatabaze.get(kluc).getZnamky())
+            {
+                db.AddGrades(id,value,i);
+                i++;
+            }
+        }
+    }
 }

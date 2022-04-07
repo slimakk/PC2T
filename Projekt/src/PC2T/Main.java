@@ -11,6 +11,7 @@ public class Main {
         int ID;
         int grade;
         Databaza studenti = new Databaza();
+        DbSQL db = new DbSQL();
         Scanner sc = new Scanner(System.in);
         while(run)
         {
@@ -77,7 +78,13 @@ public class Main {
                     if(typ == 1)
                         DbFile.zapisDoTXT(studenti,"databaza.txt");
                     else
+                    {
                         System.out.println("Not implemented");
+                        db.Connect();
+                        db.CreateTable();
+                        studenti.AddToDB(db);
+                        db.Disconnect();
+                    }
                     break;
                 case 11:
                     run = false;
