@@ -1,5 +1,6 @@
 package PC2T;
 
+import java.sql.SQLException;
 import java.util.*;
 
 public class Databaza {
@@ -65,11 +66,13 @@ public class Databaza {
         }
         return null;
     }
-    public boolean VyhodStudenta(int ID)
-    {
+    public boolean VyhodStudenta(int ID, DbSQL db) throws SQLException {
         if(prvkyDatabaze.get(ID) == null)
             return false;
         this.prvkyDatabaze.remove(ID);
+        db.Connect();
+        db.DeleteStudent(ID);
+        db.Disconnect();
         return true;
     }
     public boolean addZnamku(int ID, int znamka)
@@ -143,8 +146,9 @@ public class Databaza {
         humPriemer = humPriemer / PocetStudentov()[1];
         System.out.println("Technicky odbor: "+techPriemer+"\nHumanitny odbor: "+humPriemer);
     }
-    public void AddToDB(DbSQL db)
-    {
+    public void AddToDB(DbSQL db) throws SQLException {
+        db.Connect();
+        db.CreateTable();
         Set <Integer> kluce = this.prvkyDatabaze.keySet();
         int i = 0;
         for(int kluc:kluce)
@@ -161,5 +165,11 @@ public class Databaza {
                 i++;
             }
         }
+        db.Disconnect();
+    }
+    public void LoadFromDB(DbSQL db, Databaza dat) throws SQLException {
+        db.Connect();
+        db.LoadStudent(dat);
+        db.Disconnect();
     }
 }

@@ -1,5 +1,6 @@
 package PC2T;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
@@ -38,10 +39,14 @@ public class Main {
                 case 3:
                     System.out.println("Zadaj ID studenta");
                     ID = ValidInput.OnlyInteger(sc);
-                    if(studenti.VyhodStudenta(ID))
-                        System.out.println("Student bol prepusteny zo studia");
-                    else
-                        System.out.println("Zadany student neexistuje");
+                    try {
+                        if(studenti.VyhodStudenta(ID,db))
+                            System.out.println("Student bol prepusteny zo studia");
+                        else
+                            System.out.println("Zadany student neexistuje");
+                    } catch (SQLException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case 4:
                     System.out.println("Zadaj ID studenta");
@@ -70,7 +75,14 @@ public class Main {
                         //nacitanie zo suboru
                         DbFile.LoadFromTXT("databaza.txt",studenti);
                     else
-                        System.out.println("Not implemented");
+                    {
+                        try
+                        {
+                            studenti.LoadFromDB(db,studenti);
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
                     break;
                 case 10:
                     System.out.println("1 - Ulozenie databazy do suboru\n2 - Ulozenie databazy do SQL");
@@ -80,10 +92,14 @@ public class Main {
                     else
                     {
                         System.out.println("Not implemented");
-                        db.Connect();
-                        db.CreateTable();
-                        studenti.AddToDB(db);
-                        db.Disconnect();
+                        try
+                        {
+                            studenti.AddToDB(db);
+                        }
+                        catch (SQLException e)
+                        {
+                            System.out.println(e.getMessage());
+                        }
                     }
                     break;
                 case 11:
