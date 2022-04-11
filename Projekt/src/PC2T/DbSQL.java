@@ -4,9 +4,15 @@ import java.sql.*;
 
 public class DbSQL {
     private Connection conn;
-    public void Connect() throws SQLException {
+    public boolean Connect() {
         conn=null;
-        conn = DriverManager.getConnection("jdbc:sqlite:students.db");
+        try {
+            conn = DriverManager.getConnection("jdbc:sqlite:students.db");
+        } catch (SQLException e) {
+            //e.printStackTrace();
+            return false;
+        }
+        return true;
     }
     public void Disconnect() throws SQLException {
         if(conn != null)
@@ -97,6 +103,18 @@ public class DbSQL {
     {
         String sql = "DELETE FROM students WHERE id=?";
         try {
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1,ID);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void DeleteGrades(int ID)
+    {
+        String sql = "DELETE FROM grades WHERE id=?";
+        try
+        {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setInt(1,ID);
             preparedStatement.executeUpdate();

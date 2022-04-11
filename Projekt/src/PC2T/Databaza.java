@@ -66,13 +66,10 @@ public class Databaza {
         }
         return null;
     }
-    public boolean VyhodStudenta(int ID, DbSQL db) throws SQLException {
+    public boolean VyhodStudenta(int ID) {
         if(prvkyDatabaze.get(ID) == null)
             return false;
         this.prvkyDatabaze.remove(ID);
-        db.Connect();
-        db.DeleteStudent(ID);
-        db.Disconnect();
         return true;
     }
     public boolean addZnamku(int ID, int znamka)
@@ -170,6 +167,11 @@ public class Databaza {
     public void LoadFromDB(DbSQL db, Databaza dat) throws SQLException {
         db.Connect();
         db.LoadStudent(dat);
+        Set <Integer> kluce = this.prvkyDatabaze.keySet();
+        for(int kluc:kluce)
+        {
+            db.LoadGrades(kluc,dat);
+        }
         db.Disconnect();
     }
 }

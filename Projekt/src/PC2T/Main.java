@@ -39,13 +39,19 @@ public class Main {
                 case 3:
                     System.out.println("Zadaj ID studenta");
                     ID = ValidInput.OnlyInteger(sc);
-                    try {
-                        if(studenti.VyhodStudenta(ID,db))
-                            System.out.println("Student bol prepusteny zo studia");
-                        else
-                            System.out.println("Zadany student neexistuje");
-                    } catch (SQLException e) {
-                        System.out.println(e.getMessage());
+                    if(studenti.VyhodStudenta(ID))
+                        System.out.println("Student bol prepusteny zo studia");
+                    else
+                        System.out.println("Zadany student neexistuje");
+                    if(db.Connect())
+                    {
+                        try {
+                            db.DeleteStudent(ID);
+                            db.DeleteGrades(ID);
+                            db.Disconnect();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
                     }
                     break;
                 case 4:
