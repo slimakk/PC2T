@@ -31,12 +31,12 @@ public class Databaza {
         String meno = sc.next();
         String priezvisko = sc.next();
         System.out.println("Zadaj datum narodenia");
-        String[] dat = sc.next().split("\\.");
-        int[] datum = new int[3];
-        for(int i = 0; i < dat.length; i++)
+        //String[] dat = sc.next().split("\\.");
+        int[] datum = ValidInput.ValidDatum(sc);
+        /*for(int i = 0; i < dat.length; i++)
         {
             datum[i] = Integer.parseInt(dat[i]);
-        }
+        }*/
         System.out.println("Zadaj typ studia: 1 - Technicke; 2 - Humanitne; 3 - Kombinovane");
         int volba = ValidInput.OnlyInteger(sc);
         int id ;

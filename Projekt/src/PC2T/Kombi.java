@@ -1,6 +1,4 @@
 package PC2T;
-
-
 public class Kombi extends Student{
     public Kombi(String meno, String priezvisko, int ID, int den, int mesiac, int rok)
     {
@@ -8,8 +6,6 @@ public class Kombi extends Student{
         setDatum(rok, mesiac, den);
         setID(ID);
     }
-
-
     public void PrestupnyRok() {
         if(datum[2] % 4 == 0)
         {
