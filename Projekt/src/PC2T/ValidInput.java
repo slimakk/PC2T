@@ -1,8 +1,13 @@
 package PC2T;
 
 import java.util.Scanner;
-
+/**
+ * Trieda obsahuje metody na kontrolu zadavanych vstupov a zachytavanie vynimiek
+ */
 public class ValidInput {
+    /**
+     *  Metoda osetruje vstup tak, aby uzivatel zadal len cele cislo
+     */
     public static int OnlyInteger(Scanner sc)
     {
         int number;
@@ -18,9 +23,14 @@ public class ValidInput {
         }
         return number;
     }
+    /**
+     * Metoda osetruje vstup tak, aby uzivatel zadal datum v spravnom formate
+     * Vyuziva metodu CorrectLenght a zachytava jej vynimky
+     * Vracia int[] datum
+     */
     public static int[] ValidDatum(Scanner sc)
     {
-        int[] datum = new int[3];
+        int[] datum;
         try
         {
             String[] dat =sc.next().split("\\.");
@@ -34,6 +44,15 @@ public class ValidInput {
         }
         return datum;
     }
+    /**
+     *Metoda kotroluje, ci zadany datum splna podmienky:
+     *  -dlzka String[] == 3, ak nie vyhodi vynimku DateExceptions
+     *      -dlzka poslenej polozky v String[] (rok) >4 -> max rok 9999, inak vynimka DateExceptions
+     * Nasledne je String[] prevedeny na int[] a prebehne kontrola dalsich podmienok:
+     *  - prva polozka (den) v int[] v rozsahu 1 <= x <= 31, inak vynimka DateExceptions
+     *      - druha polozka (mesiac) v int[] v rozsahu 1 <= x <= 12, inak vynimka DateExceptions
+     * Ak su podmienky splnene, metoda vracia int[] datum
+     */
     public static int[] CorrectLenght(String [] dat) throws DateExceptions
     {
         int[] datum = new int[3];
@@ -51,6 +70,9 @@ public class ValidInput {
             throw new DateExceptions("Neplatny mesiac");
         return datum;
     }
+    /**
+     * Definicia specifickej DateException pre potreby kontroly spravneho datumu
+     */
     public static class DateExceptions extends java.lang.Exception
     {
         public DateExceptions(String msg)

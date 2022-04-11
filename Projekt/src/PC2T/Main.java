@@ -3,6 +3,11 @@ package PC2T;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+/**
+ * Hlavna trieda aplikacie
+ * Obsahuje menu na vyber jednotlivych funkcii
+ * @author slimakk
+ */
 public class Main {
 
     public static void main(String[] args) {
@@ -50,7 +55,7 @@ public class Main {
                             db.DeleteGrades(ID);
                             db.Disconnect();
                         } catch (SQLException e) {
-                            e.printStackTrace();
+                            System.out.println(e.getMessage());
                         }
                     }
                     break;
@@ -78,15 +83,15 @@ public class Main {
                     System.out.println("1 - Nacitanie databazy zo suboru\n2 - Nacitanie databazy z SQL");
                     typ = ValidInput.OnlyInteger(sc);
                     if(typ == 1)
-                        //nacitanie zo suboru
                         DbFile.LoadFromTXT("databaza.txt",studenti);
                     else
                     {
                         try
                         {
                             studenti.LoadFromDB(db,studenti);
+                            System.out.println("Databaza uspesne nacitana z SQL");
                         } catch (SQLException e) {
-                            e.printStackTrace();
+                            System.out.println(e.getMessage());
                         }
                     }
                     break;
@@ -97,10 +102,10 @@ public class Main {
                         DbFile.zapisDoTXT(studenti,"databaza.txt");
                     else
                     {
-                        System.out.println("Not implemented");
                         try
                         {
                             studenti.AddToDB(db);
+                            System.out.println("Databaza bola uspesne ulozena");
                         }
                         catch (SQLException e)
                         {

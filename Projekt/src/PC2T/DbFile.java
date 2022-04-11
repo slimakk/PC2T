@@ -3,7 +3,16 @@ package PC2T;
 import java.io.*;
 import java.util.Map;
 
+/**
+ * Trieda obsahuje metody na ukladanie a nacitavanie prvkov databazy do txt suboru
+ */
 public class DbFile {
+    /**
+     *Metoda zapisuje celu databazu do txt suboru
+     * Nazov suboru a jeho umiestnenie je dane stringom path
+     * Kazdy riadok reprezentuje jedneho studenta, jednotlive udaje su oddelene ';'
+     * Koniec riadku obsahuje vsetky znamky studenta
+     */
     public static void zapisDoTXT(Databaza studenti, String path)
     {
         File db = new File(path);
@@ -24,7 +33,7 @@ public class DbFile {
         }
         catch (IOException e)
         {
-            e.printStackTrace();
+            System.out.println("Subor nemozno otvorit");
         }
         finally {
             try {
@@ -33,10 +42,16 @@ public class DbFile {
             }
             catch (IOException e)
             {
-                e.printStackTrace();
+                System.out.println("Subor nemozno zavriet");
             }
         }
     }
+    /**
+     *Nacitava studentov do databaze z txt suboru
+     * Nazov suboru a jeho umiestnenie je dane stringom path
+     * Kazdy riadok reprezentuje jedneho studenta, jednotlive udaje su oddelene ';'
+     * Prvych 7 udajov je pevne danych - potrebne info o kazdom studentovi, zvysok riadku obsahuje znamky studenta
+     */
     public static void LoadFromTXT (String path, Databaza studenti)
     {
         try(BufferedReader br = new BufferedReader(new FileReader(path)))
