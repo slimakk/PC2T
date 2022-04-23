@@ -102,11 +102,9 @@ public class Databaza {
      */
     public String VypisStudenta(int ID)
     {
-        // TODO
         if(this.prvkyDatabaze.containsKey(ID))
         {
-            return "Meno: " + this.prvkyDatabaze.get(ID).getMeno() + " Priezvisko: " + this.prvkyDatabaze.get(ID).getPriezvisko() +
-                    " Datum narodenia: " + Arrays.toString(this.prvkyDatabaze.get(ID).getDatum()) + " Priemer: " + this.prvkyDatabaze.get(ID).getPriemer();
+            return this.prvkyDatabaze.get(ID).toString();
         }
         else
             return "Zadany student neexistuje";

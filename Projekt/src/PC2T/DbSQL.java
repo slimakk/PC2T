@@ -16,7 +16,6 @@ public class DbSQL {
         try {
             conn = DriverManager.getConnection("jdbc:sqlite:students.db");
         } catch (SQLException e) {
-            //e.printStackTrace();
             return false;
         }
         return true;
@@ -144,7 +143,7 @@ public class DbSQL {
     }
     /**
      *Vymaze vsetky znamky studenta z tabulky grades podla ID
-     * Pouziva sa spolu s metodou DeleteGrades
+     * Pouziva sa spolu s metodou DeleteStudent
      */
     public void DeleteGrades(int ID)
     {
